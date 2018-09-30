@@ -1,0 +1,40 @@
+<!--
+  Generated template for the MyFilesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Mis Archivos</ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="this.navCtrl.setRoot('SearchPage')">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <button ion-item *ngFor="let item of MyDocuments" (click)="openItem(item.code)">
+      {{item.path}}
+      <div class="item-note">
+        {{item.name}}
+      </div>
+      <div class="item-note">
+        {{item.created}}
+      </div>
+      <div class="item-note">
+        {{item.owner_fk}}
+      </div>
+      <div class="item-note" item-end>
+        <ion-icon name="download"></ion-icon>
+      </div>
+    </button>
+  </ion-list>
+</ion-content>

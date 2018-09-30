@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Archivos Recientes</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+<p *ngIf="error">{{error}}</p>
+    <ion-list>
+        <button ion-item *ngFor="let item of Documentos" (click)="openItem(item.code)">
+          {{item.path}}
+          <div class="item-note">
+            {{item.name}}
+          </div>
+          <div class="item-note">
+            {{item.created}}
+          </div>
+          <div class="item-note" item-end>
+            <ion-icon name="download"></ion-icon>
+          </div>
+        </button>
+      </ion-list>
+</ion-content>

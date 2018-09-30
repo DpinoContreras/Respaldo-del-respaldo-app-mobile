@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ course.name }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="course-detail" padding>
+
+   <p *ngIf="error">{{error}}</p>
+    <button ion-item *ngFor="let item of Documentos" (click)="openItem(item.code)">
+      {{item.path}}
+      <div class="item-note">
+        {{item.name}}
+      </div>
+      <div class="item-note">
+        {{item.created}}
+      </div>
+      <div class="item-note">
+        {{item.owner_fk}}
+      </div>
+      <div class="item-note" item-end>
+        <ion-icon name="download"></ion-icon>
+      </div>
+    </button>
+  </div>
+</ion-content>

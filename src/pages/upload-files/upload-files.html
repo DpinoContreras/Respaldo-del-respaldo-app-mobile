@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Subir Archivos</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
+  <ion-list>
+    <ion-item>
+      <ion-label>Seleccionar Curso</ion-label>
+      <ion-select formControlName="course_fk">
+        <ion-option *ngFor="let course of courses" [value]="course.pk">{{course.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label >Nombre del Archivo</ion-label>
+      <ion-input type="Guia ultra dificil" formControlName="nombre_archivo" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tipo de Archivo</ion-label>
+      <ion-select formControlName="type_fk" >
+        <ion-option *ngFor="let tipo of tipos" [value]="tipo.pk">{{tipo.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
+    <div class="profile-image-wrapper" (click)="getPicture()">
+      <div class="profile-image-placeholder" *ngIf="!this.form.controls.base64.value">
+        <ion-icon name="cloud-upload"></ion-icon>
+        <div>
+          CHOOSE FILE
+        </div>
+      </div>
+      <div class="profile-image-placeholder" *ngIf="this.form.controls.base64.value">
+        <ion-icon name="cloud-done"></ion-icon>
+        <div>
+          FILE UPLOADED
+        </div>
+      </div>
+    </div>
+  </form>
+  <ion-buttons>
+      <button ion-button (click)="done()" block><ion-icon name="cloud-upload"></ion-icon>
+        Enviar
+      </button>
+</ion-buttons>
+</ion-content>
